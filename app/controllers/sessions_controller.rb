@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate_by(params.permit(:email_address, :password))
+    user = User.authenticate_by(params.permit(:username, :password))
 
     if user
       respond_to do |format|

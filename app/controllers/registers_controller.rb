@@ -21,9 +21,9 @@ class RegistersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render json: { Success: false, Message: "Email already used" }, status: :unauthorized }
+        format.json { render json: { Success: false, Message: @user.errors }, status: :unauthorized }
         format.html do
-          redirect_to new_session_path, alert: "Email already used, please use another email address"
+          redirect_to new_registers_path, alert: "Username / Email already used, please use another email address"
         end
       end
     end
@@ -32,6 +32,6 @@ class RegistersController < ApplicationController
   private
 
   def userparams
-    params.permit(:email_address, :password)
+    params.permit(:username, :email_address, :password)
   end
 end
