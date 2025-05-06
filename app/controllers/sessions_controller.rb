@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
       respond_to do |format|
         format.json do
           render json: { Success: true, Message: "Login success", token: jwt_encode(user_id: user.id) }, status: :created
-          start_new_session_for(user)
         end
         format.html do
           start_new_session_for(user)
