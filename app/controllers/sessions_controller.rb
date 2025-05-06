@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
   skip_forgery_protection
+  skip_before_action :authenticate_request
 
   def new
   end
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
     if user
       respond_to do |format|
         format.json do
-          render json: { Success: true, Message: "Login success", session_id: session["session_id"] }, status: :created
+          render json: { Success: true, Message: "Login success", token: jwt_encode(user_id: user.id) }, status: :created
           start_new_session_for(user)
         end
         format.html do
