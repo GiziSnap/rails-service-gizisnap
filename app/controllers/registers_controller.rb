@@ -29,6 +29,10 @@ class RegistersController < ApplicationController
     end
   end
 
+  def show
+    head :no_content
+  end
+
   private
 
   def userparams
