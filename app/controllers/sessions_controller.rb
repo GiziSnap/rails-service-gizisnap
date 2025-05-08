@@ -30,6 +30,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def show
+    head :no_content
+  end
+
   def destroy
     terminate_session
     redirect_to new_session_path
