@@ -10,7 +10,7 @@ bundle install
 # to the pre-deploy command:
 
 bin/rails solid_cache:install
-bin/rails exec rails db:create
-bin/rails exec rails db:migrate
+bin/rails db:create
+bin/rails db:migrate
 
 bin/rails db:prepare
