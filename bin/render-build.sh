@@ -9,5 +9,4 @@ bundle install
 # database migrations like this one from the build command
 # to the pre-deploy command:
 
-bin/rails solid_cache:install
 bin/rails db:migrate
