@@ -8,5 +8,9 @@ bundle install
 # If you have a paid instance type, we recommend moving
 # database migrations like this one from the build command
 # to the pre-deploy command:
+
+bin/rails rails solid_cache:install:migrations
+bin/rails exec rails db:create
+bin/rails exec rails db:migrate
+
 bin/rails db:prepare
-bin/rails db:migrate
