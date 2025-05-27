@@ -84,6 +84,7 @@ production:
     username: rails_service_gizisnap
     password: <%= ENV["RAILS_SERVICE_GIZISNAP_DATABASE_PASSWORD"] %>
     url: <%= ENV["DATABASE_URL"] %>
+    prepared_statements: false
   cache:
     <<: *primary_production
     database: rails_service_gizisnap_production_cache
