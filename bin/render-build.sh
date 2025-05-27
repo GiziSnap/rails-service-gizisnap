@@ -8,11 +8,4 @@ bundle install
 # If you have a paid instance type, we recommend moving
 # database migrations like this one from the build command
 # to the pre-deploy command:
-
-bin/rails runner 'ActiveRecord::Base.connection_pool.disconnect!'
-
-bin/rails db:drop
-bin/rails db:create
 bin/rails db:migrate
-
-bin/rails db:prepare
