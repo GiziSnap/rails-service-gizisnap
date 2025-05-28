@@ -3,11 +3,16 @@ class FoodsController < ApplicationController
   skip_forgery_protection
 
   def create
-    @food = Food.new(add_food_params.merge(user: @current_user))
+    @food = Food.new(add_food_params)
+    @food.user = @current_user
 
     if @food.save
       respond_to do |format|
         format.json { render json: { Success: true, Message: "Food created successfully", food: @food }, status: :created }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: { Success: false, message: @food.errors.full_messages }, status: :unprocessable_entity }
       end
     end
   end
@@ -15,6 +20,6 @@ class FoodsController < ApplicationController
   private
 
   def add_food_params
-    params.permit(:name, :quantity)
+    params.permit(:name, :quantity, :calories, :protein, :carbs, :fat)
   end
 end

@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render json: { Success: false, Message: "Login failed, wrong password/email" }, status: :unauthorized }
+        format.json { render json: { Success: false, Message: "Wrong username / password" }, status: :unauthorized }
         format.html do
           redirect_to new_session_path, alert: "Try another email address or password."
         end

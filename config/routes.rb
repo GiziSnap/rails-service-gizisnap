@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resource :session
   resource :registers
   resources :users, only: [ :index ]
-  resources :nutritions, only: [ :create ]
   resources :foods, only: [ :create ]
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

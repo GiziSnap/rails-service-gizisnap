@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     respond_to do |format|
-      format.json { render json: { userinformation: @current_user, userfoodshistory: @current_user.foods, usernutrition: @current_user.nutritions  } }
+      format.json { render json: { userinformation: @current_user, userfoodshistory: @current_user.foods  } }
     end
   end
 end
