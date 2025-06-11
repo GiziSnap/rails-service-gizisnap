@@ -7,13 +7,11 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-  validates :username, uniqueness: true, presence: true, length: { minimum: 6 }
-  validates :email_address, uniqueness: true, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :username, uniqueness: true, presence: true, length: { minimum: 6 }, if: -> { new_record? || username_changed? }
+  validates :email_address, uniqueness: true, presence: true, if: -> { new_record? || email_address_changed? }
+  validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || password.present? }
 
   after_create :create_user_default_avatar
-
-  private
 
   def create_user_default_avatar
     unless avatar.attached?
