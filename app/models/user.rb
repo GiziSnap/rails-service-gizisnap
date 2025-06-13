@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   after_create :create_user_default_avatar
 
+  private
+
   def create_user_default_avatar
     unless avatar.attached?
       avatar.attach(io: File.open(Rails.root.join("app", "assets", "images", "default_avatar.png")),
