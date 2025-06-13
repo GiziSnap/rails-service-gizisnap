@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resource :session
   resource :registers
-  resources :users, only: [ :index ]
+
+  resources :users, only: [ :index, :update, :destroy ]
+  put "/users", to: "users#update", as: :update_user_without_id_for_jwt
+
   resources :foods, only: [ :create ]
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
