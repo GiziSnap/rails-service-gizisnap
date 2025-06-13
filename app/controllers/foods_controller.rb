@@ -20,6 +20,6 @@ class FoodsController < ApplicationController
   private
 
   def add_food_params
-    params.permit(:name, :quantity, :calories, :protein, :carbs, :fat)
+    params.permit(:name, :quantity, :calories, :protein, :carbs, :fat, :energy, :saturatedfat, :polyunsaturatedfat, :monounsaturatedfat, :cholesterol, :fiber, :sugar, :sodium, :potassium)
   end
 end
